@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="Descripción" content="Estaes una pagina diseñada para administrar de forma rapida y eficiente el delaer NITRO MOTORS,
+   para que los trabajadores tengan una de las mejores experiencias a la hora de gestionar alguna informacion">
+  <meta name="keywords" content="almacén, inventario, tienda">
+  <meta name="author" content="Carlos Daniel Florimon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Proyecto</title>
+<title>NITRO MOTORS - Sistema de Concesionario</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#07080d;--card:#10121b;--tx:#f2f4fa;--mut:#8b93a7;--pri:#ff3d00;--pri2:#ffb300;--bd:#262b40;--side:#0b0d15}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;color:var(--tx);font:15px/1.5 "Segoe UI",system-ui,Arial,sans-serif;background:radial-gradient(circle at 20% 0,#ff3d0022,transparent 40%),radial-gradient(circle at 90% 100%,#ffb30018,transparent 40%),linear-gradient(#ffffff08 1px,transparent 1px) 0 0/100% 38px,var(--bg);background-attachment:fixed}
+h1,h2{text-transform:uppercase;font-weight:900;letter-spacing:.04em;font-style:italic}
+h2{border-left:5px solid var(--pri);padding-left:12px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:6px;padding:20px}
+#login{min-height:100vh;display:grid;place-items:center;padding:16px}
+#login .card{width:100%;max-width:410px;text-align:center;border-top:4px solid var(--pri);box-shadow:0 0 60px #ff3d0033}
+#login h1{margin:8px 0 0;font-size:34px;background:linear-gradient(90deg,var(--pri),var(--pri2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.tag{margin:0;color:var(--pri2);font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:11px}
+.mut{color:var(--mut);font-size:13px}
+label{display:flex;flex-direction:column;gap:4px;text-align:left;font-size:12px;color:var(--mut);margin-bottom:10px;text-transform:uppercase;letter-spacing:.06em}
+input,select{padding:10px 11px;border:1px solid var(--bd);border-radius:4px;background:#07080d;color:var(--tx);font:inherit;text-transform:none;letter-spacing:0}
+input:focus,select:focus{outline:0;border-color:var(--pri);box-shadow:0 0 0 3px #ff3d0033}
+button{background:linear-gradient(90deg,var(--pri),var(--pri2));color:#0a0a0f;border:0;border-radius:4px;padding:11px 24px;font:inherit;font-weight:900;text-transform:uppercase;letter-spacing:.1em;cursor:pointer;margin-top:6px;transition:.15s}
+button:hover{transform:translateY(-2px);box-shadow:0 6px 22px #ff3d0066}
+button.del{background:transparent;color:#ff5252;border:1px solid #ff5252;padding:5px 12px;margin:0;letter-spacing:.05em}
+button.sec{background:transparent;color:#fff;border:1px solid var(--pri);padding:6px 14px;margin:0}
+#err,#msg{margin-left:10px;font-size:13px;font-weight:700}#err{display:block;color:#ff5252;margin:8px 0 0}#msg{color:var(--pri2)}
+.autor{margin-top:16px;padding-top:12px;border-top:1px solid var(--bd);font-size:12px;color:var(--mut)}
+header{background:var(--side);border-bottom:2px solid var(--pri);display:flex;align-items:center;gap:10px;padding:10px 16px}
+header b{font-size:20px;font-weight:900;font-style:italic;letter-spacing:.08em;background:linear-gradient(90deg,var(--pri),var(--pri2));-webkit-background-clip:text;background-clip:text;color:transparent}
+header span{margin-left:auto;color:var(--mut)}
+.app{display:grid;grid-template-columns:240px 1fr;min-height:calc(100vh - 60px)}
+nav{background:var(--side);border-right:1px solid var(--bd);padding:12px;display:flex;flex-direction:column;gap:2px}
+nav b{color:var(--pri2);font-size:11px;text-transform:uppercase;letter-spacing:.14em;margin:14px 8px 4px}
+nav a{color:#c9d1e6;padding:9px 12px;border-left:3px solid transparent;cursor:pointer;transition:.12s}
+nav a:hover{background:#ffffff0d;color:#fff}
+nav a.on{border-left-color:var(--pri);background:linear-gradient(90deg,#ff3d0033,transparent);color:#fff;font-weight:700}
+main{padding:22px;min-width:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0 14px}
+.tw{overflow-x:auto;border:1px solid var(--bd);border-radius:6px}
+table{border-collapse:collapse;width:100%;background:var(--card)}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--bd);white-space:nowrap}
+th{background:#07080d;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--pri2);border-bottom:2px solid var(--pri)}
+tbody tr:hover{background:#ff3d0014}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:14px 0}
+.stat{border-bottom:3px solid var(--pri);text-transform:uppercase;letter-spacing:.08em;font-size:12px;color:var(--mut)}
+.stat span{display:block;font-size:42px;font-weight:900;font-style:italic;color:var(--pri2);text-shadow:0 0 18px #ff3d0088;line-height:1.1}
+@media(max-width:700px){.app{grid-template-columns:1fr}nav{flex-direction:row;flex-wrap:wrap;align-items:center;border-right:0}nav b{width:100%;margin:6px 8px 0}}
+</style>
+</head>
+<body>
+
+<section id="login">
+  <div class="card">
+    <svg viewBox="0 0 64 64" width="84" height="84" aria-label="Logo Nitro Motors"><defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff3d00"/><stop offset="1" stop-color="#ffb300"/></linearGradient></defs><path d="M32 3l25 9v20c0 15-10 25-25 29C17 57 7 47 7 32V12z" fill="url(#g1)"/><path d="M36 14L18 36h11l-3 14 18-23H33z" fill="#0a0a0f"/></svg>
+    <h1>NITRO MOTORS</h1>
+    <p class="tag">Motores · Ventas · Sin freno</p>
+    <p class="mut">Sistema de gestión de concesionario de vehículos</p>
+    <form onsubmit="return entrar()">
+      <label>Usuario<input id="u" required autocomplete="username"></label>
+      <label>Clave<input id="p" type="password" required autocomplete="current-password"></label>
+      <button>Entrar</button>
+      <span id="err"></span>
+    </form>
+    <p class="mut">Demo: usuario <b>admin</b> · clave <b>1234</b></p>
+    <div class="autor">Autor: Carlos Daniel Florimon Henriquez<br>Instituto Politécnico Cardenal Sancha<br>6to Desarrollo y Administración de Aplicaciones Informáticas</div>
+  </div>
+</section>
+
+<div id="app" hidden>
+  <header>
+    <svg viewBox="0 0 64 64" width="34" height="34" aria-label="Logo Nitro Motors"><defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff3d00"/><stop offset="1" stop-color="#ffb300"/></linearGradient></defs><path d="M32 3l25 9v20c0 15-10 25-25 29C17 57 7 47 7 32V12z" fill="url(#g2)"/><path d="M36 14L18 36h11l-3 14 18-23H33z" fill="#0a0a0f"/></svg>
+    <b>NITRO MOTORS</b><span id="user"></span><button class="sec" onclick="salir()">Salir</button>
+  </header>
+  <div class="app"><nav id="menu"></nav><main id="main"></main></div>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const rd=n=>'RD$ '+Number(n).toLocaleString('es-DO',{minimumFractionDigits:2});
+let sesion='';
+
+/* ===== CONEXIÓN CON LA BASE DE DATOS (api.php -> MySQL) ===== */
+async function api(e,a,body){
+  const r=await fetch(`api.php?e=${e}&a=${a}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body||{})});
+  const d=await r.json().catch(()=>({error:'Respuesta inválida del servidor'}));
+  if(d.error)throw new Error(d.error);return d}
+
+/* ===== CLASES ===== */
+class Entidad{
+  static get ent(){return this.name.toLowerCase()}
+  async insertar(){const d=await api(this.constructor.ent,'insertar',this);this.id=d.id;return this}
+  static async leer(){return (await api(this.ent,'leer')).map(r=>Object.assign(Object.create(this.prototype),r))}
+  static eliminar(id){return api(this.ent,'eliminar',{id})}
+}
+class Marca extends Entidad{
+  constructor(nombreMarca,paisOrigen){super();Object.assign(this,{nombreMarca,paisOrigen})}
+  etiqueta(){return this.nombreMarca}
+}
+class Vehiculo extends Entidad{
+  constructor(idMarca,modelo,placa,anio,chasis,color,precio,estado='Disponible'){super();Object.assign(this,{idMarca:+idMarca,modelo,placa,anio:+anio,chasis,color,precio:+precio,estado})}
+  etiqueta(){return `${this.marca} ${this.modelo} ${this.anio}`}
+  marcarVendido(){this.estado='Vendido'}
+}
+class Cliente extends Entidad{
+  constructor(nombre,apellido,cedula,telefono,correo,direccion){super();Object.assign(this,{nombre,apellido,cedula,telefono,correo,direccion})}
+  nombreCompleto(){return this.nombre+' '+this.apellido}
+}
+class Vendedor extends Entidad{
+  constructor(nombre,apellido,cedula,telefono,comisionPorcentaje=5){super();Object.assign(this,{nombre,apellido,cedula,telefono,comisionPorcentaje:+comisionPorcentaje})}
+  nombreCompleto(){return this.nombre+' '+this.apellido}
+  calcularComision(monto){return monto*this.comisionPorcentaje/100}
+}
+class Venta extends Entidad{
+  constructor(fechaVenta,idCliente,idVehiculo,idVendedor,metodoPago='Contado'){super();Object.assign(this,{fechaVenta,idCliente:+idCliente,idVehiculo:+idVehiculo,idVendedor:+idVendedor,metodoPago,montoTotal:0})}
+  comision(){return this.montoTotal*this.pct/100}
+}
+class ServicioTaller extends Entidad{
+  constructor(idVehiculo,fechaEntrada,fechaSalida,descripcion,costo,estado='En_Proceso'){super();Object.assign(this,{idVehiculo:+idVehiculo,fechaEntrada,fechaSalida,descripcion,costo:costo===''||costo==null?null:+costo,estado})}
+  diasEnTaller(){const f=this.fechaSalida?new Date(this.fechaSalida):new Date();return Math.max(0,Math.round((f-new Date(this.fechaEntrada))/864e5))}
+}
+
+/* ===== CONFIGURACIÓN DE FORMULARIOS Y REPORTES ===== */
+const g=(o,k)=>typeof k=='function'?k(o):o[k];
+const E={
+ marca:{n:'Marca',t:'Marcas',C:Marca,del:1,
+  f:[['nombreMarca','Nombre de la marca'],['paisOrigen','País de origen']],
+  r:[['ID','id'],['Marca','nombreMarca'],['País','paisOrigen']]},
+ vehiculo:{n:'Vehículo',t:'Vehículos',C:Vehiculo,del:1,
+  f:[['idMarca','Marca','ref','marca'],['modelo','Modelo'],['placa','Placa (opcional)'],['anio','Año','number'],['chasis','Chasis'],['color','Color'],['precio','Precio (RD$)','number'],['estado','Estado','sel',['Disponible','Reservado','En_Taller']]],
+  r:[['ID','id'],['Marca','marca'],['Modelo','modelo'],['Placa','placa'],['Año','anio'],['Chasis','chasis'],['Color','color'],['Precio',o=>rd(o.precio)],['Estado','estado']]},
+ cliente:{n:'Cliente',t:'Clientes',C:Cliente,del:1,
+  f:[['nombre','Nombre'],['apellido','Apellido'],['cedula','Cédula'],['telefono','Teléfono','tel'],['correo','Correo','email'],['direccion','Dirección']],
+  r:[['ID','id'],['Nombre',o=>o.nombreCompleto()],['Cédula','cedula'],['Teléfono','telefono'],['Correo','correo'],['Dirección','direccion']]},
+ vendedor:{n:'Vendedor',t:'Vendedores',C:Vendedor,del:1,
+  f:[['nombre','Nombre'],['apellido','Apellido'],['cedula','Cédula'],['telefono','Teléfono','tel'],['comisionPorcentaje','Comisión (%)','number']],
+  r:[['ID','id'],['Nombre',o=>o.nombreCompleto()],['Cédula','cedula'],['Teléfono','telefono'],['Comisión',o=>o.comisionPorcentaje+'%']]},
+ venta:{n:'Venta',t:'Ventas',C:Venta,
+  f:[['fechaVenta','Fecha','date'],['idCliente','Cliente','ref','cliente'],['idVehiculo','Vehículo (disponibles)','ref','vehiculo'],['idVendedor','Vendedor','ref','vendedor'],['metodoPago','Método de pago','sel',['Contado','Financiado']]],
+  r:[['ID','id'],['Fecha','fechaVenta'],['Cliente','cliente'],['Vehículo','vehiculo'],['Vendedor','vendedor'],['Pago','metodoPago'],['Monto',o=>rd(o.montoTotal)],['Comisión',o=>rd(o.comision())]]},
+ serviciotaller:{n:'Servicio de taller',t:'Servicios de taller',C:ServicioTaller,del:1,
+  f:[['idVehiculo','Vehículo','ref','vehiculoAll'],['fechaEntrada','Fecha de entrada','date'],['fechaSalida','Fecha de salida (opcional)','date'],['descripcion','Descripción del servicio'],['costo','Costo (RD$, opcional)','number'],['estado','Estado','sel',['En_Proceso','Completado','Cancelado']]],
+  r:[['ID','id'],['Vehículo','vehiculo'],['Entrada','fechaEntrada'],['Salida',o=>o.fechaSalida||'—'],['Días',o=>o.diasEnTaller()],['Descripción','descripcion'],['Costo',o=>o.costo==null?'—':rd(o.costo)],['Estado','estado']]}
+};
+const OPC=['placa','fechaSalida','costo'];
+const refs={marca:()=>Marca.leer(),vehiculoAll:()=>Vehiculo.leer(),cliente:()=>Cliente.leer(),vendedor:()=>Vendedor.leer(),vehiculo:async()=>(await Vehiculo.leer()).filter(v=>v.estado=='Disponible')};
+const lab=o=>o.etiqueta?o.etiqueta():o.nombreCompleto();
+
+/* ===== VISTAS ===== */
+async function inicio(){
+  const n=await Promise.all(Object.values(E).map(e=>e.C.leer()));
+  return `<h2>Bienvenido, ${esc(sesion)}</h2><div class="cards">${Object.values(E).map((e,i)=>`<div class="card stat"><span>${n[i].length}</span>${e.t}</div>`).join('')}</div><p class="mut">Datos en vivo desde la base de datos MySQL.</p>`}
+
+async function form(k){const e=E[k],R={};
+  for(const [,,t,x] of e.f)if(t=='ref')R[x]=await refs[x]();
+  const campos=e.f.map(([n,l,t,x])=>{let i;
+    if(t=='sel')i=`<select name="${n}">${x.map(v=>`<option>${v}</option>`).join('')}</select>`;
+    else if(t=='ref')i=`<select name="${n}" required>${R[x].map(o=>`<option value="${o.id}">${esc(lab(o))}</option>`).join('')}</select>`;
+    else i=`<input name="${n}" type="${t||'text'}" ${t=='number'?'min="0" step="any"':''} ${OPC.includes(n)?'':'required'}>`;
+    return `<label>${l}${i}</label>`}).join('');
+  return `<h2>Registrar ${e.n.toLowerCase()}</h2><form class="card" onsubmit="guardar('${k}',this);return false"><div class="grid">${campos}</div><button>Guardar</button><span id="msg"></span></form>`}
+
+async function guardar(k,fm){const e=E[k],d=Object.fromEntries(new FormData(fm));
+  try{const o=await new e.C(...e.f.map(([n])=>d[n])).insertar();ir('f:'+k,'✔ '+e.n+' guardado en la base de datos (ID '+o.id+')')}
+  catch(x){$('#msg').textContent='⚠ '+x.message}}
+
+async function reporte(k){const e=E[k],L=await e.C.leer();
+  return `<h2>Reporte de ${e.t.toLowerCase()}</h2><div class="tw"><table><thead><tr>${e.r.map(c=>`<th>${c[0]}</th>`).join('')}${e.del?'<th>Acción</th>':''}</tr></thead><tbody>${L.map(o=>`<tr>${e.r.map(c=>`<td>${esc(g(o,c[1]))}</td>`).join('')}${e.del?`<td><button class="del" onclick="quitar('${k}',${o.id})">Eliminar</button></td>`:''}</tr>`).join('')||'<tr><td>Sin registros</td></tr>'}</tbody></table></div><p class="mut">Total de registros: ${L.length}</p>`}
+
+async function quitar(k,id){
+  if(!confirm('¿Eliminar este registro?'))return;
+  try{await E[k].C.eliminar(id);ir('r:'+k)}catch(x){alert(x.message)}}
+
+/* ===== MENÚ Y SESIÓN ===== */
+function menu(){$('#menu').innerHTML='<a data-m="inicio">🏠 Inicio</a>'+Object.entries(E).map(([k,e])=>`<b>${e.t}</b><a data-m="f:${k}">Registrar ${e.n.toLowerCase()}</a><a data-m="r:${k}">Reporte de ${e.t.toLowerCase()}</a>`).join('')}
+$('#menu').onclick=ev=>{const m=ev.target.dataset.m;if(m)ir(m)};
+async function ir(m,msg=''){const [t,k]=m.split(':');
+  document.querySelectorAll('#menu a').forEach(a=>a.classList.toggle('on',a.dataset.m==m));
+  $('#main').innerHTML='<p class="mut">Cargando…</p>';
+  try{$('#main').innerHTML=t=='inicio'?await inicio():t=='f'?await form(k):await reporte(k)}
+  catch(x){$('#main').innerHTML=`<div class="card">⚠ ${esc(x.message)}<br><span class="mut">Revisa que Apache y MySQL estén encendidos en XAMPP, que importaste el SQL y que abres la página desde http://localhost/nitro/</span></div>`}
+  if(msg&&$('#msg'))$('#msg').textContent=msg}
+function entrar(){
+  if($('#u').value=='admin'&&$('#p').value=='1234'){sesion=$('#u').value;$('#login').hidden=true;$('#app').hidden=false;$('#user').textContent='👤 '+sesion;menu();ir('inicio')}
+  else $('#err').textContent='Usuario o clave incorrectos';
+  return false}
+function salir(){$('#app').hidden=true;$('#login').hidden=false;$('#p').value='';$('#err').textContent=''}
+</script>
+</body>
+</html>
